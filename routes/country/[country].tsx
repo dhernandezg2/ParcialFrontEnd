@@ -41,7 +41,7 @@ export const handler: Handlers = {
 export default function Home(props: PageProps<Data>) {
   return (
     <div>
-         {props.data.country && (<a href = {`/city${props.data.capital}`}> {props.data.capital}</a>)}
+         {props.data.country && (<a href = {`/city/${props.data.capital}`}> {props.data.capital}</a>)}
     </div>
   )
 }
