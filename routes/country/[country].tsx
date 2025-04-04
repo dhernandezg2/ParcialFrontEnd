@@ -16,9 +16,15 @@ export const handler: Handlers = {
 
     const url = `https://api.api-ninjas.com/v1/country?name=` + country
 
+    const API_KEY = Deno.env.get("API_KEY")
+
+    if(!API_KEY) {
+      throw new Error("Error de api")
+    }
+
     const response = await fetch(url, {
         headers: {
-          "X-Api-Key": "vL0/f7CiyoN2O8zeskkVjQ==M6qE4kcQsldua5LM"
+          "X-Api-Key": API_KEY
         }
       })
 

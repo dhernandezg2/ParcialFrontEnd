@@ -14,13 +14,19 @@ export const handler: Handlers<Data> = {
   GET: async (req:Request, ctx: FreshContext) => {
     const url = new URL(req.url)
     const telefono = url.searchParams.get("telefono")
+
+    const API_KEY = Deno.env.get("API_KEY")
+
+    if(!API_KEY) {
+      throw new Error("Error de api")
+    }
     let country;
 
     if(telefono) {
       const url = `https://api.api-ninjas.com/v1/validatephone?number=${telefono}`
       const response = await fetch(url, {
         headers: {
-          "X-Api-Key": "vL0/f7CiyoN2O8zeskkVjQ==M6qE4kcQsldua5LM"
+          "X-Api-Key": API_KEY
         }
       })
 
